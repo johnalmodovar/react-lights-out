@@ -67,6 +67,7 @@ function Board({ nrows = 5, ncols = 5, chanceLightStartsOn = 0.15 }) {
 
       // Make a (deep) copy of the oldBoard
       const newBoard = [...oldBoard];
+      //TODO: make an actual deep copy
 
       // in the copy, flip this cell and the cells around it
       flipCell(y, x, newBoard);
@@ -79,7 +80,7 @@ function Board({ nrows = 5, ncols = 5, chanceLightStartsOn = 0.15 }) {
       return newBoard;
     });
   }
-
+  //TODO: can make separate return statement for win message
   return (
     <div className="Board">
       <h1 className={`Board-win-message ${hasWon() ? "" : "gone"}`}>You won!</h1>
