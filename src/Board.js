@@ -83,18 +83,21 @@ function Board({ nrows = 5, ncols = 5, chanceLightStartsOn = 0.15 }) {
   return (
     <div className="Board">
       <h1 className={`Board-win-message ${!hasWon() ? "gone" : ""}`}>You won!</h1>
-      <div className={`Board-win-message ${!hasWon() ? "" : "gone"}`}>
-        {
-          board.map((row, y) => {
-            const newRow = row.map((cell, x) => {
-              return (<Cell
-                isLit={board[y][x]}
-                flipCellsAroundMe={() => flipCellsAround(`${y}-${x}`)} />);
+      <table className={`Board-gameboard ${!hasWon() ? "" : "gone"}`}>
+        <tbody>
+          {
+            board.map((row, y) => {
+              return { <tr>
+             { row.map((cell, x) => {
+                return (<Cell
+                  isLit={board[y][x]}
+                  flipCellsAroundMe={() => flipCellsAround(`${y}-${x}`)} />);
+                });}
+            </tr> }
             });
-            return newRow;
-          })
-        }
-      </div>
+          }
+        </tbody>
+      </table>
     </div>
   );
 }
